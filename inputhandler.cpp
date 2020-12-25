@@ -6,6 +6,7 @@ void InputHandler::run_command(string command)
 {
     vector<string> command_words = tokenize_command(command);
     try {
+<<<<<<< HEAD
         if (command_words[0] == GET)
             manager.make_get_requests(command_words);
         else if (command_words[0] == POST){
@@ -14,6 +15,9 @@ void InputHandler::run_command(string command)
         else if (command_words[0] == "") {}
         else 
             manager.other_requests(command_words);
+=======
+        manager.make_request(command_words);
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     } catch(exception& e) {
         cout << e.what() << endl;
     }

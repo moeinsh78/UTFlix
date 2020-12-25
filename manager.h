@@ -20,9 +20,13 @@
 class Manager {
 public:
     Manager();
+<<<<<<< HEAD
     void make_post_requests(std::vector<std::string> command_words);
     void make_get_requests(std::vector<std::string> command_words);
     void other_requests(std::vector<std::string> command_words);
+=======
+    void make_request(std::vector<std::string> command_words);
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 private:
     Costumer* logged_costumer;
 };

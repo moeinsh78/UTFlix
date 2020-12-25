@@ -21,10 +21,17 @@ void Buy::post_buy(vector<string> command_words, Costumer* logged_costumer)
     if(logged_costumer->add_purchased_film(purchasing_film->get_id(), purchasing_film->get_price())) {
         database->set_money(purchasing_film->get_price(), 
             purchasing_film->calculate_grade(), purchasing_film->get_publisher_id());
+<<<<<<< HEAD
         database->edit_recommendation_table(purchasing_film->get_id(), logged_costumer->get_purchased_films());
         send_notification(logged_costumer, purchasing_film);
     }
     cout << OK << endl;
+=======
+        send_notification(logged_costumer, purchasing_film);
+    }
+    cout << OK << endl;
+    //cout << logged_costumer->get_cash() << endl;
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 }
 
 void Buy::send_notification(Costumer* logged_costumer, Film* film)

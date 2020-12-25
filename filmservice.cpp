@@ -2,6 +2,31 @@
 
 using namespace std;
 
+<<<<<<< HEAD
+=======
+void FilmService::give_service(vector<string> command_words, Costumer* logged_costumer)
+{
+    if (command_words[0] == POST) {
+        if (!logged_costumer->is_publisher()) throw PermissionDenied();
+        post_films(command_words, logged_costumer);
+    }
+    else if(command_words[0] == PUT) {
+        if (!logged_costumer->is_publisher()) throw PermissionDenied();
+        if (command_words[2] != QUESTION_MARK)
+            throw BadRequest();
+        map<string, string> input = copy_input_in_map(command_words);
+        put_films(input, logged_costumer);
+    }
+    else if(command_words[0] == GET) 
+        get_films(command_words, logged_costumer);
+    else if(command_words[0] == DELETE) {
+        if (!logged_costumer->is_publisher()) throw PermissionDenied();
+        delete_films(command_words, logged_costumer);
+    }
+    else throw BadRequest();
+}
+
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 map<string, string> FilmService::copy_input_in_map(vector<string> command_words)
 {
     map<string, string> input;
@@ -13,8 +38,11 @@ map<string, string> FilmService::copy_input_in_map(vector<string> command_words)
 void FilmService::post_films(vector<string> command_words, Costumer* logged_costumer)
 {
     Database* database = database->getInstance();
+<<<<<<< HEAD
     if (!logged_costumer->is_publisher()) 
         throw PermissionDenied();
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     if (command_words[2] != QUESTION_MARK)
         throw BadRequest();
     Film* new_film = new Film(command_words, logged_costumer->get_id());
@@ -24,6 +52,7 @@ void FilmService::post_films(vector<string> command_words, Costumer* logged_cost
     cout << OK << endl;
 }
 
+<<<<<<< HEAD
 void FilmService::put_films(vector<string> command_words, Costumer* logged_costumer)
 {
     Database* database = database->getInstance();
@@ -32,6 +61,11 @@ void FilmService::put_films(vector<string> command_words, Costumer* logged_costu
     if (!logged_costumer->is_publisher()) 
         throw PermissionDenied();
     map<string, string> input = copy_input_in_map(command_words);
+=======
+void FilmService::put_films(map<string, string> input, Costumer* logged_costumer)
+{
+    Database* database = database->getInstance();
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     if (input.count(FILM_ID) == 0) 
         throw BadRequest();
     if (stoi(input[FILM_ID]) > database->get_films_num())
@@ -48,8 +82,11 @@ void FilmService::put_films(vector<string> command_words, Costumer* logged_costu
 void FilmService::delete_films(vector<string> command_words, Costumer* logged_costumer)
 {
     Database* database = database->getInstance();
+<<<<<<< HEAD
     if (!logged_costumer->is_publisher()) 
         throw PermissionDenied();
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     if(command_words[3] != FILM_ID)
         throw BadRequest();
     if (stoi(command_words[4]) > database->get_films_num())

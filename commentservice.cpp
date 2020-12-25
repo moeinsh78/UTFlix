@@ -4,6 +4,30 @@ using namespace std;
 
 CommentService::CommentService() {}
 
+<<<<<<< HEAD
+=======
+void CommentService::service(vector<string> command_words, Costumer* logged_costumer)
+{
+    if (command_words[2] != QUESTION_MARK) 
+        throw BadRequest();
+    if (command_words[0] == DELETE) {
+        if (!logged_costumer->is_publisher()) throw PermissionDenied();
+        map<string, string> input = copy_input_in_map(command_words);
+        delete_comments(input, logged_costumer);
+    }
+    else if (command_words[0] == POST) {
+        map<string, string> input = copy_input_in_map(command_words);
+        post_comments(input, logged_costumer);
+        Database* database = database->getInstance();
+        if (input.count(FILM_ID) == 0) 
+            throw BadRequest();
+        Film* editing_film = database->get_film(stoi(input[FILM_ID]));
+        if (stoi(input[FILM_ID]) > database->get_films_num() || editing_film->is_deleted())
+            throw NotFound();
+    }
+}
+
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 map<string, string> CommentService::copy_input_in_map(vector<string> command_words)
 {
     map<string, string> input;
@@ -15,6 +39,7 @@ map<string, string> CommentService::copy_input_in_map(vector<string> command_wor
     return input;
 }
 
+<<<<<<< HEAD
 void CommentService::post_comments(vector<string> command_words, Costumer* logged_costumer)
 {
     Database* database = database->getInstance();
@@ -24,6 +49,16 @@ void CommentService::post_comments(vector<string> command_words, Costumer* logge
     Film* film = database->get_film(stoi(input[FILM_ID]));
     if (command_words[2] != QUESTION_MARK || input.count(FILM_ID) == 0 || input.count(CONTENT) == 0) 
         throw BadRequest();
+=======
+void CommentService::post_comments(map<string, string> input, Costumer* logged_costumer)
+{
+    Database* database = database->getInstance();
+    if (input.count(FILM_ID) == 0 || input.count(CONTENT) == 0) 
+        throw BadRequest();
+    if (stoi(input[FILM_ID]) > database->get_films_num())
+        throw NotFound();
+    Film* film = database->get_film(stoi(input[FILM_ID]));
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     if (film->is_deleted())
         throw NotFound();
     if (!logged_costumer->is_bought(stoi(input[FILM_ID]))) 
@@ -34,12 +69,18 @@ void CommentService::post_comments(vector<string> command_words, Costumer* logge
     cout << OK << endl;
 }
 
+<<<<<<< HEAD
 void CommentService::delete_comments(vector<string> command_words, Costumer* logged_costumer)
 {
     Database* database = database->getInstance();
     map<string, string> input = copy_input_in_map(command_words);
     if (!logged_costumer->is_publisher()) 
         throw PermissionDenied();
+=======
+void CommentService::delete_comments(map<string, string> input, Costumer* logged_costumer)
+{
+    Database* database = database->getInstance();
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     if (input.count(FILM_ID) == 0 || input.count(COMMENT_ID) == 0) 
         throw BadRequest();
     if (stoi(input[FILM_ID]) > database->get_films_num())

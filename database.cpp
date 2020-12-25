@@ -11,10 +11,14 @@ Database* Database::getInstance()
     return instance;
 }
 
+<<<<<<< HEAD
 Database::Database() 
 {
     admin = new Costumer();
 }
+=======
+Database::Database() {}
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 
 Database::~Database() 
 {
@@ -31,6 +35,7 @@ void Database::add_costumer(Costumer* new_costumer)
 
 void Database::add_film(Film* new_film)
 {
+<<<<<<< HEAD
     for (int i = 0; i < recommendation_table.size(); i++) 
         recommendation_table[i].push_back(0);
     vector<int> new_vec;
@@ -38,6 +43,9 @@ void Database::add_film(Film* new_film)
     for (int i = 0; i < films.size(); i++)
         new_vec.push_back(0);
     recommendation_table.push_back(new_vec);
+=======
+    films.push_back(new_film);
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 }
 
 bool Database::duplicate_username(std::string new_username)
@@ -46,8 +54,11 @@ bool Database::duplicate_username(std::string new_username)
         if (new_username == costumers[i]->get_username()) 
             throw BadRequest();
     }
+<<<<<<< HEAD
     if (new_username == ADMIN) 
         throw BadRequest();
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     return false;
 }
 
@@ -64,7 +75,10 @@ Costumer* Database::login(std::vector<std::string> command_words)
         entered_username = command_words[6];
     }
     else throw BadRequest();
+<<<<<<< HEAD
     if (entered_pass == ADMIN && entered_username == ADMIN) return admin;
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     entered_pass = hash_password(entered_pass);
     int user_flag = 0;
     for (int i = 0; i < costumers.size(); i++) {
@@ -133,7 +147,11 @@ vector<Film*> Database::search_in_films(map<string, string> filters, vector<int>
     vector<Film*> search_result;
     for (int i = 0; i < films.size(); i++)
         if (is_purchased(films[i]->get_id(), list_of_films)) 
+<<<<<<< HEAD
             if (films[i]->is_acceptable(filters)) search_result.push_back(films[i]);
+=======
+            if (films[i]->is_acceptable(filters) && !films[i]->is_deleted()) search_result.push_back(films[i]);
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     return search_result;
 }
 
@@ -148,6 +166,7 @@ void Database::recommend_films(Film* film, vector<int> purchased_films)
 {
     cout << RECOMMENDATION_HEADER1 << endl;
     cout << RECOMMENDATION_HEADER2 << endl;
+<<<<<<< HEAD
     int num_of_recommendations = 4;
     vector<int> weights_copy;
     vector<bool> availability;
@@ -188,6 +207,36 @@ void Database::edit_recommendation_table(int film_id, vector<int> purchased_film
             recommendation_table[film_id - 1][purchased_films[i] - 1]++;
             recommendation_table[purchased_films[i] - 1][film_id - 1]++;
         }
+=======
+    vector<Film*> unpurchased_films;
+    vector<float> grades;
+    for (int i = 0; i < films.size(); i++) {
+        if (films[i]->is_deleted() || films[i] == film) continue;
+        bool is_purchased = false;
+        for (int j = 0; j < purchased_films.size(); j++)
+            if (purchased_films[i] == films[i]->get_id()) is_purchased = true;
+        if (!is_purchased) {
+            grades.push_back(films[i]->calculate_grade());
+            unpurchased_films.push_back(films[i]);
+        }
+    }
+    int num_of_recommendations = 4;
+    if (grades.size() < num_of_recommendations) num_of_recommendations = grades.size();
+    for (int i = 0; i < num_of_recommendations; i++) {
+        cout << i + 1 << ". ";
+        float max_grade = grades[0];
+        for (int j = 1; j < grades.size(); j++)
+            if (grades[j] > max_grade) max_grade = grades[j];
+        for (int j = 0; j < unpurchased_films.size(); j++) {
+            if (unpurchased_films[j]->calculate_grade() == max_grade) {
+                unpurchased_films[j]->print_recommendation();
+                unpurchased_films.erase(unpurchased_films.begin() + j);
+                grades.erase(grades.begin() + j);
+                break;
+            }
+        }
+        cout << endl;
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     }
 }
 

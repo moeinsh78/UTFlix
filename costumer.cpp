@@ -26,12 +26,15 @@ Costumer::Costumer(vector<string> command_words, bool is_publisher)
     cash = 0;
 }
 
+<<<<<<< HEAD
 Costumer::Costumer()
 {
     info[USERNAME] = ADMIN;
     info[PASSWORD] = hash_password(ADMIN);
 }
 
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 Costumer::~Costumer() {}
 
 string Costumer::hash_password(string pass) 

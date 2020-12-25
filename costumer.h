@@ -14,7 +14,10 @@ class Film;
 
 class Costumer {
 public:
+<<<<<<< HEAD
     Costumer();
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     Costumer(std::vector<std::string> command_words, bool is_publisher);
     ~Costumer();
 

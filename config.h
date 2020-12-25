@@ -42,8 +42,16 @@ const std::string BUY_NOTIF_P3 = " buy your film ";
 const std::string RATE_NOTIF_P1 = "User ";
 const std::string RATE_NOTIF_P3 = " rate your film ";
 
+<<<<<<< HEAD
 const std::string GET = "GET";
 const std::string POST = "POST";
+=======
+
+const std::string GET = "GET";
+const std::string PUT = "PUT";
+const std::string POST = "POST";
+const std::string DELETE = "DELETE";
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 
 const std::string QUESTION_MARK = "?";
 
@@ -73,8 +81,11 @@ const std::string SCORE = "score";
 
 const std::string LIMIT = "limit";
 
+<<<<<<< HEAD
 const std::string ADMIN = "admin";
 
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 const std::string NAME = "name";
 const std::string YEAR = "year";
 const std::string LENGTH = "length";
@@ -88,12 +99,18 @@ const std::string MIN_RATE = "min_rate";
 const std::string LOGIN = "login";
 const std::string SIGNUP = "signup";
 const std::string FILMS = "films";
+<<<<<<< HEAD
 const std::string PUT_FILMS = "put_films";
 const std::string DELETE_FILMS = "delete_films";
 const std::string FOLLOWERS = "followers";
 const std::string RATE = "rate";
 const std::string COMMENTS = "comments";
 const std::string DELETE_COMMENTS = "delete_comments";
+=======
+const std::string FOLLOWERS = "followers";
+const std::string RATE = "rate";
+const std::string COMMENTS = "comments";
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 const std::string PURCHASED = "purchased";
 const std::string PUBLISHED = "published";
 const std::string NOTIFICATIONS = "notifications";
@@ -101,7 +118,10 @@ const std::string READ = "read";
 const std::string MONEY = "money";
 const std::string BUY = "buy";
 const std::string REPLIES = "replies";
+<<<<<<< HEAD
 const std::string LOGOUT = "logout";
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
 
 const char SPACE = ' ';
 #endif

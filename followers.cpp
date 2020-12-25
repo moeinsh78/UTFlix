@@ -4,10 +4,31 @@ using namespace std;
 
 Followers::Followers() {}
 
+<<<<<<< HEAD
 void Followers::post_followers(vector<string> command_words, Costumer* logged_costumer) 
 {
     if (command_words[2] != QUESTION_MARK) 
         throw BadRequest();
+=======
+void Followers::service(vector<string> command_words, Costumer* logged_costumer) 
+{
+    if(command_words[0] == POST) { 
+        if (command_words[2] != QUESTION_MARK) 
+            throw BadRequest();
+        post_followers(command_words, logged_costumer);
+    }
+    else if(command_words[0] == GET) {
+        if (!logged_costumer->is_publisher()) throw PermissionDenied();
+        get_followers(logged_costumer);
+    }
+    else if(command_words[0] == DELETE || command_words[0] == PUT) 
+        throw NotFound();
+    else throw BadRequest();
+}
+
+void Followers::post_followers(vector<string> command_words, Costumer* logged_costumer) 
+{
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     if (command_words[3] != USER_ID) 
         throw BadRequest();
     int pub_id = stoi(command_words[4]);
@@ -23,8 +44,11 @@ void Followers::post_followers(vector<string> command_words, Costumer* logged_co
 
 void Followers::get_followers(Costumer* logged_costumer) 
 {
+<<<<<<< HEAD
     if (!logged_costumer->is_publisher()) 
         throw PermissionDenied();
+=======
+>>>>>>> 0b9f556f7bce9f6c559e24ee298b821adf9ef437
     Database* database = database->getInstance();
     database->print_followers_info(logged_costumer->get_id());
 }
