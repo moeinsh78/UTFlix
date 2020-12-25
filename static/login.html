@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+    <style>
+        table, th, td { 
+            border: 1px solid black; 
+        }
+        body {
+            background-color: rgb(30, 180, 220);
+        } 
+    </style>
+<html>
+    <body>
+        <h1>Welcome to Moein's Netflix :)</h1>
+        <br />
+        <div style="background-color: rgb(231, 30, 43); padding: 2%; max-width: 300px; border-radius: 20px; margin: auto; ">
+            <h2>Login!</h2>
+            <a href="/signup">I don't have an account, Sign me Up!</a>
+            <h3>Login to your account: </h3>
+            <form action="/login" method="post">
+                <input name="username" type="text" placeholder="Username" style="display:block; margin: auto; margin-bottom: 10px; padding: 5px; width: 80%;" required>
+                <input name="password" type="password" placeholder="Password" style="display:block; margin: auto; margin-bottom: 30px; padding: 5px; width: 80%;" required>
+                <button type="submit" style="display:block; width: 50%; margin: auto; margin-bottom: 10px; padding: 7px;">Login</button>
+            </form>
+        </div>
+    </body>
+</html>

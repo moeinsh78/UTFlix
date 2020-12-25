@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <style>
+        table, th, td { 
+            border: 1px solid red; 
+        }
+        div {            
+            background-color: coral;
+            width: 400px;
+            padding: 50px;
+            margin: 20px;
+            border-radius: 20px;
+            margin: auto;
+        }
+    </style>
+    </head>
+    <body>
+        <h2>Enter the film's info in the fields</h2>
+        <div>
+            <form action="/upload" method="post">
+                <p> Film name: <input name="name" type="text" placeholder="Name..." required> </p>
+                <p> Price: <input name="price" type="number" placeholder="Price..." min="0" required> </p>
+                <p> Director: <input name="director" type="text" placeholder="Director's name..." required> </p>
+                <p> Length: <input name="length" type="number" placeholder="Your Film length..." min="1" required> </p>
+                <p> Summary: <input name="summary" type="text" placeholder="Summary of your film..." required> </p>
+                <p> Production year: <input name="year" type="number" min="1900" max="2019" placeholder="Year..." required> </p>
+                <button type="submit">Upload this film</button>
+            </form>
+        </div>
+    </body>
+</html>

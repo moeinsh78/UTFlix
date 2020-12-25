@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <style>
+    div {            
+        
+        background-color: coral;
+        width: 400px;
+        padding: 50px;
+        margin: 20px;
+        border-radius: 20px;
+        margin: auto;
+    }
+    </style>
+    <body style="background-color: rgb(30, 180, 220);">
+        <h2>Create your account:</h2>
+        <br />
+        <div>
+            <form action="/signup" method="post">
+                <p> Username: <input name="username" type="text" placeholder="Username..." required> </p>
+                <p> Password: <input name="password" type="password" placeholder="Password..." required> </p>
+                <p> Retype password: <input name="repeat_password" type="password" placeholder="Repeat your password..." required> </p>
+                <p> Email Adress: <input name="email" type="email" placeholder="Your Email address..." required> </p>
+                <p> Age: <input name="age" type="number" placeholder="Your age..." min="1" required> </p>
+                <p> Wanna create a publisher account? 
+                    <br>
+                    <input type="radio" name="publisher" value="publisher" required> Yes<br>
+                    <input type="radio" name="publisher" value="costumer" required> No<br>
+                </p>
+                <button type="submit">Create account</button>
+            </form>
+        </div>
+    </body>
+</html>
